@@ -1,0 +1,169 @@
+/* ==============================================================
+   ESTILOS GENERALES Y PALETA PROFESIONAL ACADÉMICA
+   ============================================================== */
+
+.root {
+    -fx-font-family: "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+    -fx-font-size: 13px;
+    -fx-background-color: #f4f6f9;
+}
+
+/* Encabezado */
+.header-box {
+    -fx-background-color: #1a365d;
+    -fx-padding: 16px 24px;
+}
+
+.header-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+.header-subtitle {
+    -fx-font-size: 12px;
+    -fx-text-fill: #cbd5e1;
+}
+
+/* Tarjetas y Paneles */
+.card-pane {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 6px;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+    -fx-padding: 16px;
+}
+
+.section-title {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e293b;
+    -fx-padding: 0 0 4px 0;
+}
+
+.form-label {
+    -fx-font-weight: 600;
+    -fx-text-fill: #475569;
+}
+
+/* Controles de Entrada */
+.text-field, .combo-box, .date-picker {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+    -fx-padding: 5px 8px;
+    -fx-font-size: 13px;
+}
+
+.text-field:focused, .combo-box:focused, .date-picker:focused {
+    -fx-border-color: #2563eb;
+    -fx-border-width: 1.5px;
+}
+
+.input-error {
+    -fx-border-color: #dc2626 !important;
+    -fx-border-width: 1.5px !important;
+    -fx-background-color: #fef2f2 !important;
+}
+
+/* Botones con roles claros */
+.button {
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-background-radius: 4px;
+    -fx-padding: 7px 14px;
+    -fx-cursor: hand;
+}
+
+.btn-primary {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: #ffffff;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.btn-secondary {
+    -fx-background-color: #475569;
+    -fx-text-fill: #ffffff;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #334155;
+}
+
+.btn-danger {
+    -fx-background-color: #dc2626;
+    -fx-text-fill: #ffffff;
+}
+
+.btn-danger:hover {
+    -fx-background-color: #b91c1c;
+}
+
+.btn-neutral {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #334155;
+}
+
+.btn-neutral:hover {
+    -fx-background-color: #cbd5e1;
+}
+
+.button:disabled {
+    -fx-opacity: 0.55;
+    -fx-cursor: default;
+}
+
+/* TableView */
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 4px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f1f5f9;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent #e2e8f0 transparent transparent;
+    -fx-padding: 6px;
+}
+
+.table-view .column-header .label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #334155;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f8fafc;
+}
+
+.table-row-cell:even {
+    -fx-background-color: #ffffff;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #e0e7ff;
+}
+
+.table-row-cell:selected .text {
+    -fx-fill: #1e1b4b;
+}
+
+/* Barra inferior de estado */
+.status-bar {
+    -fx-background-color: #e2e8f0;
+    -fx-padding: 6px 16px;
+}
+
+.status-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #475569;
+}

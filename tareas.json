@@ -1,0 +1,22 @@
+[ {
+  "id" : "95811d08-dd9a-4ef0-ba15-e7702f7a24f6",
+  "titulo" : "Proyecto Final JavaFX",
+  "asignatura" : "Programación II",
+  "fechaEntrega" : [ 2026, 10, 12 ],
+  "prioridad" : "ALTA",
+  "estado" : "EN_PROGRESO"
+}, {
+  "id" : "b2421290-b382-4cde-a3f6-37d32fbfb2fc",
+  "titulo" : "Ejercicios de Cálculo Integral",
+  "asignatura" : "Matemáticas",
+  "fechaEntrega" : [ 2026, 10, 9 ],
+  "prioridad" : "MEDIA",
+  "estado" : "PENDIENTE"
+}, {
+  "id" : "f9de120c-050b-4a34-b33e-0e0158d6cff0",
+  "titulo" : "Lectura Capítulo 4",
+  "asignatura" : "Historia",
+  "fechaEntrega" : [ 2026, 10, 6 ],
+  "prioridad" : "BAJA",
+  "estado" : "COMPLETADA"
+} ]

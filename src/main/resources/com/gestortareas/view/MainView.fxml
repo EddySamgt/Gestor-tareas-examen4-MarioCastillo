@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gestortareas.controller.MainController"
+            stylesheets="@../css/styles.css"
+            prefWidth="1050" prefHeight="680">
+
+    <!-- CABECERA DE LA APLICACIÓN -->
+    <top>
+        <VBox styleClass="header-box" spacing="3">
+            <Label text="Gestor de Tareas Académicas" styleClass="header-title" />
+            <Label text="Planificación, seguimiento y administración de actividades académicas" styleClass="header-subtitle" />
+        </VBox>
+    </top>
+
+    <!-- CONTENIDO CENTRAL -->
+    <center>
+        <SplitPane dividerPositions="0.36" BorderPane.alignment="CENTER">
+            <items>
+                <!-- PANEL IZQUIERDO: FORMULARIO Y ACCIONES -->
+                <VBox spacing="14" styleClass="card-pane">
+                    <padding>
+                        <Insets top="16" right="16" bottom="16" left="16" />
+                    </padding>
+
+                    <Label text="Detalles de la Tarea" styleClass="section-title" />
+                    <Label fx:id="lblEstadoModo" text="Modo registro: Creando nueva tarea" style="-fx-font-size: 11px;" />
+
+                    <Separator />
+
+                    <!-- Formulario con campos organizados -->
+                    <GridPane vgap="12" hgap="10">
+                        <columnConstraints>
+                            <ColumnConstraints minWidth="100" prefWidth="110" />
+                            <ColumnConstraints hgrow="ALWAYS" />
+                        </columnConstraints>
+
+                        <!-- Título -->
+                        <Label text="Título (*):" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                        <TextField fx:id="txtTitulo" promptText="Ej. Ensayo sobre Ética" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+                        <!-- Asignatura -->
+                        <Label text="Asignatura (*):" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                        <TextField fx:id="txtAsignatura" promptText="Ej. Filosofía" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+                        <!-- Fecha de Entrega -->
+                        <Label text="Fecha Entrega (*):" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+                        <DatePicker fx:id="dpFechaEntrega" maxWidth="Infinity" promptText="Seleccionar fecha" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+                        <!-- Prioridad -->
+                        <Label text="Prioridad (*):" styleClass="form-label" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+                        <ComboBox fx:id="cbPrioridad" maxWidth="Infinity" promptText="Seleccionar prioridad" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+                        <!-- Estado -->
+                        <Label text="Estado (*):" styleClass="form-label" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+                        <ComboBox fx:id="cbEstado" maxWidth="Infinity" promptText="Seleccionar estado" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+                    </GridPane>
+
+                    <Separator />
+
+                    <!-- Botones de Acción -->
+                    <VBox spacing="8">
+                        <HBox spacing="10">
+                            <Button fx:id="btnAgregar" text="Agregar Tarea" onAction="#onAgregar" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="btn-primary" />
+                            <Button fx:id="btnEditar" text="Guardar Cambios" onAction="#onEditar" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="btn-secondary" />
+                        </HBox>
+                        <HBox spacing="10">
+                            <Button fx:id="btnLimpiar" text="Limpiar Formulario" onAction="#onLimpiar" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="btn-neutral" />
+                            <Button fx:id="btnEliminar" text="Eliminar Tarea" onAction="#onEliminar" maxWidth="Infinity" HBox.hgrow="ALWAYS" styleClass="btn-danger" />
+                        </HBox>
+                    </VBox>
+
+                    <Label text="(*) Campos requeridos obligatorios" style="-fx-font-size: 11px; -fx-text-fill: #64748b;" />
+                </VBox>
+
+                <!-- PANEL DERECHO: BÚSQUEDA, FILTROS Y TABLA -->
+                <VBox spacing="12">
+                    <padding>
+                        <Insets top="14" right="14" bottom="14" left="14" />
+                    </padding>
+
+                    <!-- BARRA DE FILTROS Y BÚSQUEDA -->
+                    <VBox spacing="8" styleClass="card-pane">
+                        <Label text="Buscar y Filtrar Tareas" styleClass="section-title" />
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <VBox spacing="3" HBox.hgrow="ALWAYS">
+                                <Label text="Palabra clave:" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #475569;" />
+                                <TextField fx:id="txtBuscar" promptText="Buscar por título o asignatura..." />
+                            </VBox>
+
+                            <VBox spacing="3" prefWidth="160">
+                                <Label text="Asignatura:" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #475569;" />
+                                <ComboBox fx:id="cbFiltroAsignatura" maxWidth="Infinity" />
+                            </VBox>
+
+                            <VBox spacing="3" prefWidth="150">
+                                <Label text="Estado:" style="-fx-font-size: 11px; -fx-font-weight: bold; -fx-text-fill: #475569;" />
+                                <ComboBox fx:id="cbFiltroEstado" maxWidth="Infinity" />
+                            </VBox>
+
+                            <VBox spacing="3" alignment="BOTTOM_CENTER">
+                                <Label text=" " style="-fx-font-size: 11px;" />
+                                <Button fx:id="btnLimpiarFiltros" text="Restablecer" onAction="#onLimpiarFiltros" styleClass="btn-neutral" />
+                            </VBox>
+                        </HBox>
+                    </VBox>
+
+                    <!-- TABLA DE TAREAS -->
+                    <TableView fx:id="tablaTareas" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="colTitulo" text="Título" prefWidth="210" />
+                            <TableColumn fx:id="colAsignatura" text="Asignatura" prefWidth="150" />
+                            <TableColumn fx:id="colFechaEntrega" text="Fecha de Entrega" prefWidth="120" />
+                            <TableColumn fx:id="colPrioridad" text="Prioridad" prefWidth="95" />
+                            <TableColumn fx:id="colEstado" text="Estado" prefWidth="110" />
+                        </columns>
+                        <columnResizePolicy>
+                            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                        <placeholder>
+                            <Label text="No se encontraron tareas registradas o que coincidan con los filtros." style="-fx-text-fill: #94a3b8;" />
+                        </placeholder>
+                    </TableView>
+                </VBox>
+            </items>
+        </SplitPane>
+    </center>
+
+    <!-- BARRA DE ESTADO INFERIOR -->
+    <bottom>
+        <HBox styleClass="status-bar" alignment="CENTER_LEFT" spacing="15">
+            <Label fx:id="lblContadorTareas" text="0 tareas registradas" styleClass="status-label" />
+            <Pane HBox.hgrow="ALWAYS" />
+            <Label text="Sistema Gestor Académico v1.0" styleClass="status-label" />
+        </HBox>
+    </bottom>
+</BorderPane>
